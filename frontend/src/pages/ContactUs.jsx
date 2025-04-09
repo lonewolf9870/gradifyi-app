@@ -60,9 +60,10 @@ function ContactUs() {
   
       const text = await response.text();
   
+      // Check for HTML error pages
       if (text.startsWith("<!DOCTYPE html>") || text.startsWith("<html")) {
-        console.error("⚠️ Server returned HTML, not JSON");
-        throw new Error("Server error: received HTML instead of JSON.");
+        console.error("⚠️ Server returned HTML:", text.slice(0, 200));
+        throw new Error("Server error: Please try again later.");
       }
   
       let data;
@@ -71,19 +72,37 @@ function ContactUs() {
       } catch (err) {
         console.error("❌ JSON parse error:", text);
         console.log(err);
-        throw new Error("Server response was not valid JSON.");
+        throw new Error("Server response was not valid. Please try again.");
       }
   
       if (!response.ok) {
-        throw new Error(data.message || `Request failed with status ${response.status}`);
+        // Handle backend validation errors (duplicate email/phone)
+        if (data.errors) {
+          // Set field-specific errors to display under each input
+          setErrors(data.errors);
+          
+          // Format error messages for the alert
+          const errorMessages = Object.entries(data.errors)
+            .map(([field, message]) => `${field}: ${message}`)
+            .join('\n');
+          
+          throw new Error(errorMessages);
+        }
+        throw new Error(data.message || `Request failed (status ${response.status})`);
       }
   
-      // Success
+      // Success case
       setSubmitStatus({
         success: true,
-        message: data.message || "Thank you for contacting us!",
+        message: data.message || "Thank you for contacting us! We'll get back to you soon.",
       });
       setFormData(initialFormState);
+  
+      // Auto-hide success message after 5 seconds
+      timerRef.current = setTimeout(() => {
+        setSubmitStatus(null);
+      }, 5000);
+  
     } catch (err) {
       console.error("❌ Submission error:", err);
       setSubmitStatus({
