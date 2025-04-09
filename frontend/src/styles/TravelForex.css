@@ -249,7 +249,7 @@
   }
   
   /* Buttons */
-  .cta-button {
+  .cta-button-forex{
     display: inline-block;
     background-color: var(--primary-color);
     color: var(--white);
@@ -262,7 +262,7 @@
     text-align: center;
   }
   
-  .cta-button:hover {
+  .cta-button-forex:hover {
     background-color: var(--primary-dark);
     border-color: var(--primary-dark);
     transform: translateY(-2px);
