@@ -41,40 +41,55 @@ function ContactUs() {
   
     try {
       const apiUrl = `${import.meta.env.VITE_API_BASE_URL}/contact-us/`;
+      console.log("Submitting to:", apiUrl); // Debugging
+      
       const response = await fetch(apiUrl, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...formData,
-          email: formData.email.toLowerCase().trim(),
-        }),
+        headers: { 
+          "Content-Type": "application/json",
+          // Add CSRF token if using Django's CSRF protection
+          "X-CSRFToken": getCookie("csrftoken") 
+        },
+        credentials: "include", // For cookies/session
+        body: JSON.stringify(formData),
       });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        if (data.errors) setErrors(data.errors);
-        throw new Error(data.message || `Request failed with status ${response.status}`);
+  
+      // First check if response is HTML
+      const responseText = await response.text();
+      if (responseText.startsWith("<!DOCTYPE html>")) {
+        throw new Error("Server returned HTML error page");
       }
-
+  
+      // Try to parse as JSON
+      const data = JSON.parse(responseText);
+      
+      if (!response.ok) {
+        throw new Error(data.message || "Request failed");
+      }
+  
       setSubmitStatus({
         success: true,
-        message: data.message || "Thank you for contacting us! We'll get back to you soon.",
+        message: "Thank you for contacting us! We'll get back to you soon."
       });
-      
       setFormData(initialFormState);
-      timerRef.current = setTimeout(() => setSubmitStatus(null), 5000);
   
     } catch (error) {
-      console.error("Submission error:", error);
+      console.error("Full error:", error);
       setSubmitStatus({
         success: false,
-        message: error.message || "An error occurred while submitting the form. Please try again.",
+        message: error.message || "Submission failed. Please try again."
       });
     } finally {
       setIsSubmitting(false);
     }
   };
+  
+  // Add this helper function for CSRF tokens
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
 
   return (
     <div className="container mt-5 contact-form-container">
