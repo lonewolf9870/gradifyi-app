@@ -51,15 +51,15 @@ function Home() {
         <h2>Top Universities Partnered With</h2>
         <div className="universities-grid">
           <div className="university-card">
-            <img src="./images/universities/adelaide3.png" alt="University 1" />
-            <p>Adelaide University</p>
+            <img src="./images/universities/usa1.webp" alt="University 1" />
+            <p>University of North Alabama</p>
           </div>
           <div className="university-card">
-            <img src="./images/universities/wollongong1.jpg" alt="University 2" />
-            <p>University of Wollongong</p>
+            <img src="./images/universities/france2.webp" alt="University 2" />
+            <p>TOULOUSE BUSINESS SCHOOL</p>
           </div>
           <div className="university-card">
-            <img src="./images/universities/okanagan5.jpg" alt="University 3" />
+            <img src="./images/universities/okanagan5.jpeg" alt="University 3" />
             <p>Okanagan College</p>
           </div>
           <div className="university-card">
@@ -67,16 +67,16 @@ function Home() {
             <p>Auburn University at Montgomery</p>
           </div>
           <div className="university-card">
-            <img src="./images/universities/aruuniversity1.jpeg" alt="University 4" />
-            <p>Anglia Ruskin University</p>
+            <img src="./images/universities/nz3.jpg" alt="University 4" />
+            <p>THE UNIVERSITY OF OTAGO</p>
           </div>
           <div className="university-card">
-            <img src="./images/universities/bcuuniversity3.jpeg" alt="University 4" />
-            <p>Birmingham City University</p>
+            <img src="./images/universities/germany5.jpg" alt="University 4" />
+            <p>ARDEN UNIVERSITY</p>
           </div>
           <div className="university-card">
-            <img src="./images/universities/centennial4.jpg" alt="University 4" />
-            <p>Centennial College</p>
+            <img src="./images/universities/singapore4.jpg" alt="University 4" />
+            <p>PSB ACADEMY</p>
           </div>
         </div>
       </section>
