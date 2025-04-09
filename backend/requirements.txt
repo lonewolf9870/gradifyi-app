@@ -13,10 +13,11 @@ python-dotenv==1.0.0
 django-cors-headers==4.3.1
 
 # Production security
-whitenoise==6.6.0 
+whitenoise==6.6.0
 
+# Django REST Framework & Auth
 djangorestframework==3.16.0
-django-rest-framework==0.1.0
 djangorestframework-simplejwt==5.2.2
 
+# HTTP requests
 requests==2.31.0
