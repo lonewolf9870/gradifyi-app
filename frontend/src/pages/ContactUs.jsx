@@ -3,7 +3,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/ContactUs.css";
 
 function ContactUs() {
- 
   const initialFormState = {
     name: "",
     email: "",
@@ -19,47 +18,19 @@ function ContactUs() {
   const [errors, setErrors] = useState({});
   const timerRef = useRef(null);
 
-  const countries = [
-    "USA",
-    "UK",
-    "Canada",
-    "Australia",
-    "India",
-    "Germany",
-    "France",
-    "Singapore",
-    "Other",
-  ];
-  
-  const courses = [
-    "Computer Science",
-    "Electronics & Communication",
-    "Mechanical Engineering",
-    "Civil Engineering",
-    "Electrical Engineering",
-    "Information Technology",
-    "Other",
-  ];
+  const countries = ["USA", "UK", "Canada", "Australia", "India", "Germany", "France", "Singapore", "Other"];
+  const courses = ["Computer Science", "Electronics & Communication", "Mechanical Engineering", "Civil Engineering", "Electrical Engineering", "Information Technology", "Other"];
 
-  // Clean up timeouts when component unmounts
   useEffect(() => {
     return () => {
-      if (timerRef.current) {
-        clearTimeout(timerRef.current);
-      }
+      if (timerRef.current) clearTimeout(timerRef.current);
     };
   }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-    // Clear error when user starts typing
-    if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: "" }));
-    }
+    setFormData(prev => ({ ...prev, [name]: value }));
+    if (errors[name]) setErrors(prev => ({ ...prev, [name]: "" }));
   };
 
   const handleSubmit = async (e) => {
@@ -70,53 +41,29 @@ function ContactUs() {
   
     try {
       const apiUrl = `${import.meta.env.VITE_API_BASE_URL}/contact-us/`;
-
       const response = await fetch(apiUrl, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
           email: formData.email.toLowerCase().trim(),
         }),
       });
-  
-      const responseText = await response.text();
 
-      let responseData;
-      try {
-        responseData = JSON.parse(responseText);
-      } catch {
-        throw new Error(
-          response.ok
-            ? "Received unexpected response format"
-            : `Server error: ${response.status} ${response.statusText}`
-        );
-      }
-  
+      const data = await response.json();
+
       if (!response.ok) {
-        if (responseData.errors) {
-          setErrors(responseData.errors);
-        }
-        throw new Error(
-          responseData.message || `Request failed with status ${response.status}`
-        );
+        if (data.errors) setErrors(data.errors);
+        throw new Error(data.message || `Request failed with status ${response.status}`);
       }
-  
-      // Success case - reset form and show success message
+
       setSubmitStatus({
         success: true,
-        message: responseData.message || "Thank you for your message! We'll contact you soon.",
+        message: data.message || "Thank you for contacting us! We'll get back to you soon.",
       });
       
-      // Reset form data
       setFormData(initialFormState);
-      
-      // Auto-hide success message after 5 seconds
-      timerRef.current = setTimeout(() => {
-        setSubmitStatus(null);
-      }, 5000);
+      timerRef.current = setTimeout(() => setSubmitStatus(null), 5000);
   
     } catch (error) {
       console.error("Submission error:", error);
@@ -128,37 +75,22 @@ function ContactUs() {
       setIsSubmitting(false);
     }
   };
-  
+
   return (
     <div className="container mt-5 contact-form-container">
       <h2 className="text-center mb-4">Contact Us</h2>
 
       {submitStatus && (
-        <div
-          className={`alert alert-${
-            submitStatus.success ? "success" : "danger"
-          } fade show`}
-          role="alert"
-        >
+        <div className={`alert alert-${submitStatus.success ? "success" : "danger"} fade show`} role="alert">
           {submitStatus.message}
           {submitStatus.success && (
-            <button
-              type="button"
-              className="btn-close float-end"
-              aria-label="Close"
-              onClick={() => setSubmitStatus(null)}
-            ></button>
+            <button type="button" className="btn-close float-end" aria-label="Close" onClick={() => setSubmitStatus(null)}></button>
           )}
         </div>
       )}
 
-      <form
-        onSubmit={handleSubmit}
-        className="p-4 border rounded shadow-sm bg-white"
-        noValidate
-      >
-        {/* Form fields remain the same as your original */}
-        <div className="mb-3">
+      <form onSubmit={handleSubmit} className="p-4 border rounded shadow-sm bg-white" noValidate>
+      <div className="mb-3">
           <label className="form-label">Full Name*</label>
           <input
             type="text"
