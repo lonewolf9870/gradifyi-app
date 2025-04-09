@@ -1,0 +1,271 @@
+/* Scholarships Page Styles */
+.scholarships-page {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Hero Section */
+.scholarships-hero {
+  background: linear-gradient(135deg, #0066cc, #004080);
+  padding: 5rem 0;
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.scholarships-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../../assets/hero-pattern.png') center/cover no-repeat;
+  opacity: 0.1;
+}
+
+.scholarships-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.scholarships-hero h1 {
+  font-weight: 700;
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.scholarships-hero .lead {
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+}
+
+.highlight {
+  font-weight: 700;
+  color: #ffcc00;
+  font-size: 1.6rem;
+}
+
+/* Scholarship Types Section */
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+.card-title {
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.card-text {
+  color: #7f8c8d;
+}
+
+.card-footer {
+  background: transparent;
+  border-top: none;
+  padding: 0 2rem 2rem;
+}
+
+/* Scholarship Categories Section */
+.category-number {
+  width: 60px;
+  height: 60px;
+  background-color: #0066cc;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+/* Application Form Section */
+.form-control, .form-select {
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #0066cc;
+  box-shadow: 0 0 0 0.25rem rgba(0, 102, 204, 0.25);
+}
+
+.form-check-input {
+  width: 1.2em;
+  height: 1.2em;
+  margin-top: 0.2em;
+}
+
+.form-check-label {
+  margin-left: 0.5em;
+}
+
+.btn-primary {
+  background-color: #0066cc;
+  border-color: #0066cc;
+  padding: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #004d99;
+  border-color: #004d99;
+  transform: translateY(-2px);
+}
+
+.btn-outline-primary {
+  color: #0066cc;
+  border-color: #0066cc;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  background-color: #0066cc;
+  color: white;
+}
+
+/* FAQ Section */
+.accordion-button {
+  font-weight: 600;
+  padding: 1.25rem;
+  background-color: white;
+  color: #2c3e50;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #f8f9fa;
+  color: #0066cc;
+  box-shadow: none;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+  border-color: rgba(0, 0, 0, 0.125);
+}
+
+.accordion-body {
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .scholarships-hero h1 {
+    font-size: 2.2rem;
+  }
+  
+  .scholarships-hero .lead {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .scholarships-hero {
+    padding: 3rem 0;
+  }
+  
+  .scholarships-hero h1 {
+    font-size: 1.8rem;
+  }
+  
+  .card {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-container {
+    padding: 1.5rem;
+  }
+}
+
+/* Animation Enhancements */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.scholarship-types .card,
+.scholarship-categories .card,
+.form-container {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.scholarship-types .card:nth-child(1) { animation-delay: 0.1s; }
+.scholarship-types .card:nth-child(2) { animation-delay: 0.2s; }
+.scholarship-types .card:nth-child(3) { animation-delay: 0.3s; }
+.scholarship-types .card:nth-child(4) { animation-delay: 0.4s; }
+
+/* Utility Classes */
+.shadow-soft {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.rounded-xl {
+  border-radius: 12px;
+}
+
+/* Button Enhancements */
+.btn {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%, -50%);
+  transform-origin: 50% 50%;
+}
+
+.btn:focus:not(:active)::after {
+  animation: ripple 0.6s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(20, 20);
+    opacity: 0;
+  }
+}

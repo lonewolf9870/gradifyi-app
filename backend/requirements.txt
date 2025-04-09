@@ -1,0 +1,22 @@
+# Core Django
+Django==4.2.*
+gunicorn==21.2.0
+
+# Database
+psycopg2-binary==2.9.9
+dj-database-url==2.1.0
+
+# Environment variables
+python-dotenv==1.0.0
+
+# CORS (for React-Django connection)
+django-cors-headers==4.3.1
+
+# Production security
+whitenoise==6.6.0 
+
+djangorestframework==3.16.0
+django-rest-framework==0.1.0
+djangorestframework-simplejwt==5.2.2
+
+requests==2.31.0

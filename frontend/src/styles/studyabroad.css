@@ -1,0 +1,145 @@
+/* Home Page Styles */
+
+.home {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+  }
+  
+  /* Hero Section */
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 8%;
+    background: #f8f9fa;
+  }
+  
+  .hero-content {
+    max-width: 50%;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #004AAD;
+    margin-bottom: 1rem;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .action-buttons {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .consult-btn, .whatsapp-btn {
+    background: #004AAD;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+  
+  .whatsapp-btn {
+    display: flex;
+    align-items: center;
+    background: #25D366;
+  }
+  
+  .whatsapp-btn img {
+    width: 20px;
+    margin-right: 8px;
+  }
+  
+  .consult-btn:hover, .whatsapp-btn:hover {
+    opacity: 0.8;
+  }
+  
+  .hero-image img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Study Abroad Section */
+  .study-abroad-section {
+    text-align: center;
+    padding: 4rem 8%;
+  }
+  
+  .study-abroad-section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #004AAD;
+    margin-bottom: 1rem;
+  }
+  
+  .study-abroad-section p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #555;
+  }
+  
+  .countries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .country-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .country-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .country-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .country-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .country-info p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+  
+  .country-info h3 {
+    margin: 5px 0 0;
+    font-size: 1.2rem;
+  }
+  
+  .cta-button {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .cta-button .consult-btn {
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+  }

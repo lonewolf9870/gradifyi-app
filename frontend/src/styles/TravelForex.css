@@ -1,0 +1,355 @@
+/* Variables */
+:root {
+    --primary-color: #0066cc;
+    --primary-dark: #004080;
+    --text-color: #2c3e50;
+    --text-light: #7f8c8d;
+    --bg-light: #f8f9fa;
+    --white: #ffffff;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    --transition: all 0.3s ease;
+  }
+  
+  /* Base Styles */
+  .travel-forex-page {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  
+  /* Hero Section */
+  .travel-hero {
+    display: flex;
+    align-items: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: 80vh;
+  }
+  
+  .hero-content {
+    flex: 1;
+    padding-right: 3rem;
+    max-width: 600px;
+  }
+  
+  .hero-content h1 {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+  
+  .hero-content p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--text-light);
+    margin-bottom: 2rem;
+  }
+  
+  .hero-image {
+    flex: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    max-width: 600px;
+  }
+  
+  .hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  
+  .hero-image:hover img {
+    transform: scale(1.02);
+  }
+  
+  /* Service Sections */
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+  }
+  
+  .section-header h2 {
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    margin-bottom: 1rem;
+  }
+  
+  .section-header p {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    color: var(--text-light);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .travel-assistance,
+  .forex-assistance,
+  .testimonials {
+    padding: 5rem 2rem;
+  }
+  
+  .travel-assistance {
+    background-color: var(--white);
+  }
+  
+  .forex-assistance {
+    background-color: var(--bg-light);
+  }
+  
+  /* Service Cards */
+  .service-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .service-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    text-align: center;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  }
+  
+  .service-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+  }
+  
+  .service-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+  
+  .service-card p {
+    color: var(--text-light);
+    font-size: 1rem;
+  }
+  
+  /* Forex Content */
+  .forex-content {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 3rem;
+  }
+  
+  .forex-image {
+    flex: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  
+  .forex-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  
+  .forex-image:hover img {
+    transform: scale(1.02);
+  }
+  
+  .forex-details {
+    flex: 1;
+  }
+  
+  .forex-details h3 {
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    margin-bottom: 1.5rem;
+  }
+  
+  .forex-details ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 2rem;
+  }
+  
+  .forex-details li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text-light);
+  }
+  
+  .forex-details li:before {
+    content: "✓";
+    color: #28a745;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+  }
+  
+  /* Testimonials */
+  .testimonials {
+    background-color: var(--white);
+    text-align: center;
+  }
+  
+  .testimonials h2 {
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    margin-bottom: 3rem;
+  }
+  
+  .testimonial-cards {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+  
+  .testimonial-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    max-width: 400px;
+    text-align: left;
+    transition: var(--transition);
+  }
+  
+  .testimonial-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .testimonial-card p {
+    font-style: italic;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+  }
+  
+  .student-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .student-info .name {
+    font-weight: 600;
+  }
+  
+  .student-info .destination {
+    color: var(--text-light);
+    font-size: 0.9rem;
+  }
+  
+  /* Buttons */
+  .cta-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+    border: 2px solid var(--primary-color);
+    text-align: center;
+  }
+  
+  .cta-button:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 102, 204, 0.3);
+  }
+  
+  .cta-button-outline {
+    display: inline-block;
+    background-color: transparent;
+    color: var(--primary-color);
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+    border: 2px solid var(--primary-color);
+  }
+  
+  .cta-button-outline:hover {
+    background-color: rgba(0, 102, 204, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 102, 204, 0.1);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 992px) {
+    .travel-hero {
+      flex-direction: column;
+      text-align: center;
+      padding: 3rem 1rem;
+      min-height: auto;
+    }
+    
+    .hero-content {
+      padding-right: 0;
+      margin-bottom: 2rem;
+      max-width: 100%;
+    }
+    
+    .forex-content {
+      flex-direction: column;
+    }
+    
+    .forex-image {
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .travel-hero {
+      padding: 2rem 1rem;
+    }
+    
+    .service-highlights {
+      grid-template-columns: 1fr;
+    }
+    
+    .travel-assistance,
+    .forex-assistance,
+    .testimonials {
+      padding: 3rem 1rem;
+    }
+    
+    .testimonial-card {
+      max-width: 100%;
+    }
+  }
+  
+  /* Animation */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .service-card,
+  .forex-content,
+  .testimonial-card {
+    animation: fadeIn 0.6s ease forwards;
+    opacity: 0;
+  }
+  
+  .service-card:nth-child(1) { animation-delay: 0.1s; }
+  .service-card:nth-child(2) { animation-delay: 0.2s; }
+  .service-card:nth-child(3) { animation-delay: 0.3s; }
+  .forex-content { animation-delay: 0.4s; }
+  .testimonial-card:nth-child(1) { animation-delay: 0.5s; }
+  .testimonial-card:nth-child(2) { animation-delay: 0.6s; }

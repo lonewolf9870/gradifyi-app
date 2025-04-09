@@ -1,0 +1,15 @@
+version: "1.0"  # Required top-level version field
+
+endpoints:
+  - name: "8000-be2"
+    port: 8000    # Required port at endpoint level
+    type: REST     # Required endpoint type
+    # Additional recommended fields:
+    context: /     # Required for REST endpoints
+    service:
+      basePath: /
+      port: 8000   # Optional service port
+    networkVisibilities:
+      - Project
+      - Public
+    protocol: HTTP
