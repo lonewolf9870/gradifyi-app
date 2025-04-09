@@ -22,17 +22,20 @@ function ContactUs() {
   const courses = ["Computer Science", "Electronics & Communication", "Mechanical Engineering", "Civil Engineering", "Electrical Engineering", "Information Technology", "Other"];
 
   useEffect(() => {
+    const timeoutId = timerRef.current; 
+  
     return () => {
-      if (timerRef.current) clearTimeout(timerRef.current);
+      if (timeoutId) clearTimeout(timeoutId); 
     };
   }, []);
-
+  
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-    if (errors[name]) setErrors(prev => ({ ...prev, [name]: "" }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errors[name]) setErrors((prev) => ({ ...prev, [name]: "" }));
   };
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -40,72 +43,75 @@ function ContactUs() {
     setErrors({});
   
     try {
-      const apiUrl = `${import.meta.env.VITE_API_BASE_URL}/contact-us/`;
-      console.log("Submitting to:", apiUrl); // Debugging
-      
+      const apiBase = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
+      const apiUrl = `${apiBase}/contact-us/`;
+      console.log("Submitting to:", apiUrl);
+  
       const response = await fetch(apiUrl, {
         method: "POST",
-        headers: { 
+        headers: {
           "Content-Type": "application/json",
-          // Add CSRF token if using Django's CSRF protection
-          "X-CSRFToken": getCookie("csrftoken") 
         },
-        credentials: "include", // For cookies/session
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          email: formData.email.toLowerCase().trim(),
+        }),
       });
   
-      // First check if response is HTML
-      const responseText = await response.text();
-      if (responseText.startsWith("<!DOCTYPE html>")) {
-        throw new Error("Server returned HTML error page");
+      const text = await response.text();
+  
+      if (text.startsWith("<!DOCTYPE html>") || text.startsWith("<html")) {
+        console.error("⚠️ Server returned HTML, not JSON");
+        throw new Error("Server error: received HTML instead of JSON.");
       }
   
-      // Try to parse as JSON
-      const data = JSON.parse(responseText);
-      
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch (err) {
+        console.error("❌ JSON parse error:", text);
+        console.log(err);
+        throw new Error("Server response was not valid JSON.");
+      }
+  
       if (!response.ok) {
-        throw new Error(data.message || "Request failed");
+        throw new Error(data.message || `Request failed with status ${response.status}`);
       }
   
+      // Success
       setSubmitStatus({
         success: true,
-        message: "Thank you for contacting us! We'll get back to you soon."
+        message: data.message || "Thank you for contacting us!",
       });
       setFormData(initialFormState);
-  
-    } catch (error) {
-      console.error("Full error:", error);
+    } catch (err) {
+      console.error("❌ Submission error:", err);
       setSubmitStatus({
         success: false,
-        message: error.message || "Submission failed. Please try again."
+        message: err.message || "Something went wrong. Please try again later.",
       });
     } finally {
       setIsSubmitting(false);
     }
   };
   
-  // Add this helper function for CSRF tokens
-  function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-  }
 
   return (
     <div className="container mt-5 contact-form-container">
       <h2 className="text-center mb-4">Contact Us</h2>
 
       {submitStatus && (
-        <div className={`alert alert-${submitStatus.success ? "success" : "danger"} fade show`} role="alert">
+        <div className={`alert alert-${submitStatus.success ? "success" : "danger"}`} role="alert">
           {submitStatus.message}
           {submitStatus.success && (
-            <button type="button" className="btn-close float-end" aria-label="Close" onClick={() => setSubmitStatus(null)}></button>
+            <button type="button" className="btn-close float-end" onClick={() => setSubmitStatus(null)}></button>
           )}
         </div>
       )}
 
       <form onSubmit={handleSubmit} className="p-4 border rounded shadow-sm bg-white" noValidate>
-      <div className="mb-3">
+        {/* Name */}
+        <div className="mb-3">
           <label className="form-label">Full Name*</label>
           <input
             type="text"
@@ -118,6 +124,7 @@ function ContactUs() {
           {errors.name && <div className="invalid-feedback">{errors.name}</div>}
         </div>
 
+        {/* Email */}
         <div className="mb-3">
           <label className="form-label">Email*</label>
           <input
@@ -128,11 +135,10 @@ function ContactUs() {
             onChange={handleChange}
             required
           />
-          {errors.email && (
-            <div className="invalid-feedback">{errors.email}</div>
-          )}
+          {errors.email && <div className="invalid-feedback">{errors.email}</div>}
         </div>
 
+        {/* Phone */}
         <div className="mb-3">
           <label className="form-label">Phone Number*</label>
           <input
@@ -144,11 +150,10 @@ function ContactUs() {
             required
             placeholder="+1234567890"
           />
-          {errors.phone && (
-            <div className="invalid-feedback">{errors.phone}</div>
-          )}
+          {errors.phone && <div className="invalid-feedback">{errors.phone}</div>}
         </div>
 
+        {/* Country */}
         <div className="mb-3">
           <label className="form-label">Country*</label>
           <select
@@ -159,17 +164,16 @@ function ContactUs() {
             required
           >
             <option value="">Select your country</option>
-            {countries.map((country, index) => (
-              <option key={index} value={country}>
+            {countries.map((country, idx) => (
+              <option key={idx} value={country}>
                 {country}
               </option>
             ))}
           </select>
-          {errors.country && (
-            <div className="invalid-feedback">{errors.country}</div>
-          )}
+          {errors.country && <div className="invalid-feedback">{errors.country}</div>}
         </div>
 
+        {/* Course */}
         <div className="mb-3">
           <label className="form-label">Course Interest*</label>
           <select
@@ -180,17 +184,16 @@ function ContactUs() {
             required
           >
             <option value="">Select a course</option>
-            {courses.map((course, index) => (
-              <option key={index} value={course}>
+            {courses.map((course, idx) => (
+              <option key={idx} value={course}>
                 {course}
               </option>
             ))}
           </select>
-          {errors.course && (
-            <div className="invalid-feedback">{errors.course}</div>
-          )}
+          {errors.course && <div className="invalid-feedback">{errors.course}</div>}
         </div>
 
+        {/* Message */}
         <div className="mb-3">
           <label className="form-label">Your Message</label>
           <textarea
@@ -203,18 +206,11 @@ function ContactUs() {
           />
         </div>
 
-        <button
-          type="submit"
-          className="btn btn-primary w-100 py-2 mt-3"
-          disabled={isSubmitting}
-        >
+        {/* Submit */}
+        <button type="submit" className="btn btn-primary w-100 py-2 mt-3" disabled={isSubmitting}>
           {isSubmitting ? (
             <>
-              <span
-                className="spinner-border spinner-border-sm me-2"
-                role="status"
-                aria-hidden="true"
-              ></span>
+              <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
               Submitting...
             </>
           ) : (
