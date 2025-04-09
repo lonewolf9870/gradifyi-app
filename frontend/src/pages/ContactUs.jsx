@@ -45,69 +45,61 @@ function ContactUs() {
     try {
       const apiBase = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
       const apiUrl = `${apiBase}/contact-us/`;
-      console.log("Submitting to:", apiUrl);
+      
+      // Clear any previous timeout
+      if (timerRef.current) clearTimeout(timerRef.current);
   
       const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          // Add if using CSRF protection:
+          // "X-CSRFToken": getCookie("csrftoken"),
         },
+        // credentials: "include", // Uncomment if using session auth
         body: JSON.stringify({
           ...formData,
           email: formData.email.toLowerCase().trim(),
         }),
       });
   
-      const text = await response.text();
+      const responseText = await response.text();
   
-      // Check for HTML error pages
-      if (text.startsWith("<!DOCTYPE html>") || text.startsWith("<html")) {
-        console.error("⚠️ Server returned HTML:", text.slice(0, 200));
-        throw new Error("Server error: Please try again later.");
+      // Handle HTML responses (server errors)
+      if (/^\s*</.test(responseText)) {
+        throw new Error("Server is currently unavailable. Please try again later.");
       }
   
-      let data;
-      try {
-        data = JSON.parse(text);
-      } catch (err) {
-        console.error("❌ JSON parse error:", text);
-        console.log(err);
-        throw new Error("Server response was not valid. Please try again.");
-      }
+      // Parse JSON response
+      const data = JSON.parse(responseText);
   
       if (!response.ok) {
-        // Handle backend validation errors (duplicate email/phone)
+        // Handle field validation errors
         if (data.errors) {
-          // Set field-specific errors to display under each input
           setErrors(data.errors);
-          
-          // Format error messages for the alert
-          const errorMessages = Object.entries(data.errors)
-            .map(([field, message]) => `${field}: ${message}`)
-            .join('\n');
-          
-          throw new Error(errorMessages);
+          const firstError = Object.values(data.errors)[0];
+          throw new Error(firstError || "Please correct the form errors");
         }
-        throw new Error(data.message || `Request failed (status ${response.status})`);
+        throw new Error(data.message || "Submission failed. Please try again.");
       }
   
-      // Success case
+      // Success handling
       setSubmitStatus({
         success: true,
-        message: data.message || "Thank you for contacting us! We'll get back to you soon.",
+        message: data.message || "Thank you for contacting us! We'll respond shortly.",
       });
       setFormData(initialFormState);
   
-      // Auto-hide success message after 5 seconds
-      timerRef.current = setTimeout(() => {
-        setSubmitStatus(null);
-      }, 5000);
+      // Auto-dismiss success message
+      timerRef.current = setTimeout(() => setSubmitStatus(null), 5000);
   
-    } catch (err) {
-      console.error("❌ Submission error:", err);
+    } catch (error) {
+      console.error("Submission error:", error);
       setSubmitStatus({
         success: false,
-        message: err.message || "Something went wrong. Please try again later.",
+        message: error.message.includes("JSON.parse") 
+          ? "Server returned invalid response" 
+          : error.message,
       });
     } finally {
       setIsSubmitting(false);

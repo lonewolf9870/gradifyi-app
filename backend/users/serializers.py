@@ -18,13 +18,13 @@ class ContactSerializer(serializers.ModelSerializer):
         # Check for existing email
         if Contact.objects.filter(email=email).exists():
             raise serializers.ValidationError({
-                'email': 'This email has already been used for submission.'
+                'email': 'Our team is already processing your submission from this email. We will be in touch.'
             })
         
         # Check for existing phone
         if Contact.objects.filter(phone=phone).exists():
             raise serializers.ValidationError({
-                'phone': 'This phone number has already been used for submission.'
+                'phone': 'This number is already registered. We will reach out to you shortly.'
             })
         
         return data

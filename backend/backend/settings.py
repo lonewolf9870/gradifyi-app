@@ -16,6 +16,8 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'django-react-full-stack-app-frontend.onrender.com',
     'django-react-full-stack-app-backend.onrender.com',
+    'gradifyi.com',
+    'www.gradifyi.com',
 ]
 
 # Installed apps
@@ -68,8 +70,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
-import dj_database_url
-
 DATABASES = {
     'default': dj_database_url.config(
         default=os.getenv("DATABASE_URL"),
@@ -78,8 +78,7 @@ DATABASES = {
     )
 }
 
-
-# Static files
+# Static files (Production-ready)
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
@@ -91,30 +90,18 @@ REST_FRAMEWORK = {
     ),
 }
 
-# CORS settings
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "https://django-react-full-stack-app-frontend.onrender.com",
-    "https://www.gradifyi.com",
-    "https://gradifyi.com"
-]
-
+# CORS Settings
 CORS_ALLOW_ALL_ORIGINS = True
-
-
 CORS_ALLOW_CREDENTIALS = True
 
-# Google OAuth
+# OAuth Client ID (used in frontend, just kept for potential frontend use)
 GOOGLE_OAUTH2_CLIENT_ID = os.getenv("VITE_GOOGLE_CLIENT_ID")
 
-# Other App Settings
+# App URLs
 FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
 BACKEND_URL = os.getenv("BACKEND_URL", "http://localhost:8000")
-CONTACT_NOTIFICATION_EMAIL = os.getenv("CONTACT_NOTIFICATION_EMAIL", "admin@example.com")
-SUPPORT_EMAIL = os.getenv("SUPPORT_EMAIL", "support@example.com")
 
-# Security Settings
+# Security Settings for Production
 SECURE_HSTS_SECONDS = 31536000
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
@@ -122,19 +109,7 @@ SECURE_SSL_REDIRECT = not DEBUG
 SESSION_COOKIE_SECURE = not DEBUG
 CSRF_COOKIE_SECURE = not DEBUG
 
-# Logging for debugging
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {'class': 'logging.StreamHandler'},
-    },
-    'root': {
-        'handlers': ['console'],
-        'level': 'DEBUG',
-    },
-}
-
+# Locale
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
