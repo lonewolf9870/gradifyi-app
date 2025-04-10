@@ -9,7 +9,7 @@ class Contact(models.Model):
     phone = models.CharField(max_length=20)
     country = models.CharField(max_length=50)
     course = models.CharField(max_length=50)
-    message = models.TextField(blank=True)
+    message = models.TextField(blank=True,default="no message")
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

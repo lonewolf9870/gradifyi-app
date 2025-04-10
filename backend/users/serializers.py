@@ -10,6 +10,9 @@ class ContactSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             'message': {'required': False, 'allow_blank': True}
         }
+        
+    def validate_name(self, value):
+        return value.lower()
 
     def validate(self, data):
         email = data.get('email')
