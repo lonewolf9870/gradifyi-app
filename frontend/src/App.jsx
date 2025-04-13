@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/App.css";
-import logo from "./assets/logo.png";
+import logo from "/images/logo.png";
 import Home from "./pages/Home";
 import Whatwedo from "./pages/Whatwedo";
 import StudentServices from "./pages/StudentServices";
