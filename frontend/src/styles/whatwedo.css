@@ -179,9 +179,10 @@
   .social-icons button{
     background-color: #004AAD;
     border:none;
-    padding: 10px 20px;
+    width:150px;
+    padding:10px 20px;
     border-radius: 6px;
-    color:white
+    color:white;
   }
   
   /* ===== Responsive Design ===== */

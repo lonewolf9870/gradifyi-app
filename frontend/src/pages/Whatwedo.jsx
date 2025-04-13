@@ -28,7 +28,7 @@ function Whatwedo() {
                     <h1>Dream Big, Study Smart & Succeed Globally with Expert Guidance!</h1>
                     <p>Connect with our experts and take the first step toward studying abroad.</p>
                     <div className="action-buttons">
-                        <button className="consult-btn">Free Expert Consultation</button>
+                        <Link to="/contact-us"><button className="consult-btn">Free Expert Consultation</button></Link>
                         <button className="whatsapp-btn">Download Brochure</button>
                     </div>
                 </div>
@@ -61,7 +61,8 @@ function Whatwedo() {
                         your preferences and career aspirations.
                       </p>
                       <div className="social-icons">
-                      <Link to="/contact-us" className="contact-button">Contact Us</Link>
+                      <Link to="/contact-us" className="contact-button"><button>
+                      Contact Us</button></Link>
                         <a href="#">
                           <FontAwesomeIcon icon={faFacebook} />
                         </a>

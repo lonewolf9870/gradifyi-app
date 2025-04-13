@@ -88,17 +88,13 @@ function App() {
           label: "Admission Guidance",
           path: "/student-services/admission-guidance",
         },
-        { label: "Visa Assistance", path: "/student-services/visa-assistance" },
       ],
     },
     {
       label: "What We Do",
       path: "/what-we-do",
       key: "whatWeDo",
-      links: [
-        { label: "About Us", path: "/what-we-do/about-us" },
-        { label: "Partnered Universities", path: "/what-we-do/partnered" },
-      ],
+      links: [] // Added empty links array for consistency
     },
   ];
 
@@ -119,14 +115,16 @@ function App() {
               onMouseLeave={() => toggleDropdown(key)}
             >
               <Link to={path} className="dropdown-toggle">
-                {label}{" "}
-                <img
-                  src={arrow}
-                  alt="dropdown arrow"
-                  className={`arrow ${dropdowns[key] ? "rotated" : ""}`}
-                />
+                {label}
+                {links && links.length > 0 && (
+                  <img
+                    src={arrow}
+                    alt="dropdown arrow"
+                    className={`arrow ${dropdowns[key] ? "rotated" : ""}`}
+                  />
+                )}
               </Link>
-              {dropdowns[key] && (
+              {dropdowns[key] && links && links.length > 0 && (
                 <div className="dropdown-menu">
                   {links.map(({ label, path }) => (
                     <Link key={path} to={path}>
@@ -139,27 +137,23 @@ function App() {
           ))}
         </nav>
 
-        {/* Desktop Buttons */}
         <div className="nav-buttons">
           <Link to="/contact-us" className="btn contact-btn">
             Contact Us
           </Link>
         </div>
 
-        {/* Mobile Hamburger Button */}
-        {/* Mobile Hamburger Button */}
         <button
           className={`hamburger ${isMobileMenuOpen ? "open" : ""}`}
           onClick={toggleMobileMenu}
+          aria-label="Toggle menu"
         >
-          <span></span>
           <span></span>
           <span></span>
           <span></span>
         </button>
       </header>
 
-      {/* Mobile Menu */}
       {/* Mobile Menu */}
       <div className={`mobile-menu ${isMobileMenuOpen ? "active" : ""}`}>
         {menuItems.map(({ label, path, key, links }) => (
@@ -172,33 +166,38 @@ function App() {
               >
                 {label}
               </Link>
-              <button
-                className="mobile-dropdown-arrow"
-                onClick={() => toggleMobileDropdown(key)}
-              >
-                <img
-                  src={arrow}
-                  alt="dropdown arrow"
-                  className={`arrow ${mobileDropdowns[key] ? "rotated" : ""}`}
-                />
-              </button>
-            </div>
-            <div
-              className={`mobile-dropdown-menu ${
-                mobileDropdowns[key] ? "active" : ""
-              }`}
-            >
-              {links.map(({ label, path }) => (
-                <Link
-                  key={path}
-                  to={path}
-                  className="mobile-dropdown-item"
-                  onClick={closeMobileMenu}
+              {links && links.length > 0 && (
+                <button
+                  className="mobile-dropdown-arrow"
+                  onClick={() => toggleMobileDropdown(key)}
+                  aria-expanded={mobileDropdowns[key]}
                 >
-                  {label}
-                </Link>
-              ))}
+                  <img
+                    src={arrow}
+                    alt="dropdown arrow"
+                    className={`arrow ${mobileDropdowns[key] ? "rotated" : ""}`}
+                  />
+                </button>
+              )}
             </div>
+            {links && links.length > 0 && (
+              <div
+                className={`mobile-dropdown-menu ${
+                  mobileDropdowns[key] ? "active" : ""
+                }`}
+              >
+                {links.map(({ label, path }) => (
+                  <Link
+                    key={path}
+                    to={path}
+                    className="mobile-dropdown-item"
+                    onClick={closeMobileMenu}
+                  >
+                    {label}
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
         ))}
 
@@ -213,8 +212,7 @@ function App() {
         </div>
       </div>
 
-      {/* Main Content */}
-      <ScrollToTop/>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/study-abroad" element={<StudyAbroad />} />
@@ -223,27 +221,22 @@ function App() {
         <Route path="/what-we-do" element={<Whatwedo />} />
         <Route path="/student-services" element={<StudentServices />} />
         <Route path="/contact-us" element={<ContactUs />} />
+        
         {/* Student Services */}
-        <Route
-          path="/student-services/scholarships"
-          element={<Scholarships />}
-        />
-        <Route
-          path="/student-services/travel-assistance"
-          element={<TravelAssistance />}
-        />
-        <Route
-          path="/student-services/career-counseling"
-          element={<CareerCounseling />}
-        />
-        <Route
-        path="/student-services/admission-guidance"
-        element={<AdmissionGuidance />}
-        />
-        <Route
-        path="/student-services/visa-assistance"
-        element={<AdmissionGuidance />}
-        />
+        <Route path="/student-services/scholarships" element={<Scholarships />} />
+        <Route path="/student-services/travel-assistance" element={<TravelAssistance />} />
+        <Route path="/student-services/career-counseling" element={<CareerCounseling />} />
+        <Route path="/student-services/admission-guidance" element={<AdmissionGuidance />} />
+        
+        {/* Add these routes if you have the corresponding components */}
+        {/* <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/work-with-us" element={<WorkWithUs />} />
+        <Route path="/university-visits" element={<UniversityVisits />} />
+        <Route path="/media-press" element={<MediaPress />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/brochure" element={<Brochure />} />
+        <Route path="/refer-friend" element={<ReferFriend />} />
+        <Route path="/pay-online" element={<PayOnline />} /> */}
       </Routes>
 
       {/* Footer */}
@@ -265,43 +258,8 @@ function App() {
                 </Link>
               </li>
               <li>
-                <Link to="/about-us" onClick={closeMobileMenu}>
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/work-with-us" onClick={closeMobileMenu}>
-                  Work with Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/university-visits" onClick={closeMobileMenu}>
-                  University Visits
-                </Link>
-              </li>
-              <li>
-                <Link to="/media-press" onClick={closeMobileMenu}>
-                  Media & Press
-                </Link>
-              </li>
-              <li>
-                <Link to="/events" onClick={closeMobileMenu}>
-                  Events
-                </Link>
-              </li>
-              <li>
                 <Link to="/brochure" onClick={closeMobileMenu}>
                   E-Brochure Download
-                </Link>
-              </li>
-              <li>
-                <Link to="/refer-friend" onClick={closeMobileMenu}>
-                  Refer a Friend
-                </Link>
-              </li>
-              <li>
-                <Link to="/pay-online" onClick={closeMobileMenu}>
-                  Pay Online
                 </Link>
               </li>
             </ul>
@@ -323,12 +281,7 @@ function App() {
                 "ACT",
               ].map((test) => (
                 <li key={test}>
-                  <Link
-                    to={`/test-prep/${test.toLowerCase()}`}
-                    onClick={closeMobileMenu}
-                  >
                     {test}
-                  </Link>
                 </li>
               ))}
             </ul>
@@ -351,8 +304,7 @@ function App() {
                 "Spain",
                 "Malaysia",
                 "India",
-                "Netherlands",
-                "Italy",
+                "Netherlands"
               ].map((country) => (
                 <li key={country}>
                   <Link
@@ -372,12 +324,9 @@ function App() {
             <h5>Student Services</h5>
             <ul>
               {[
-                "Visa Guidance",
                 "Admission Guidance",
                 "Career Counseling",
-                "Finance Assistance",
-                "Travel Assistance",
-                "Forex Assistance",
+                "Travel & Forex Assistance",
                 "Scholarship",
               ].map((service) => (
                 <li key={service}>

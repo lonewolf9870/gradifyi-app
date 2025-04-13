@@ -1,18 +1,22 @@
-/* Scholarships Page Styles */
+/* Scholarships Page - Enhanced Responsive Design */
 .scholarships-page {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
-/* Hero Section */
+/* Hero Section - Responsive Enhancements */
 .scholarships-hero {
   background: linear-gradient(135deg, #0066cc, #004080);
-  padding: 5rem 0;
+  padding: 4rem 1rem;
   color: white;
   text-align: center;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  min-height: 60vh;
 }
 
 .scholarships-hero::before {
@@ -24,103 +28,160 @@
   height: 100%;
   background: url('../../assets/hero-pattern.png') center/cover no-repeat;
   opacity: 0.1;
+  pointer-events: none;
 }
 
 .scholarships-hero .container {
   position: relative;
   z-index: 1;
+  width: 100%;
 }
 
 .scholarships-hero h1 {
   font-weight: 700;
-  font-size: 2.8rem;
+  font-size: clamp(2rem, 5vw, 2.8rem);
   margin-bottom: 1rem;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-  color:goldenrod;
+  color: goldenrod;
+  line-height: 1.2;
 }
 
 .scholarships-hero .lead {
-  font-size: 1.4rem;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
   margin-bottom: 2rem;
   color:black;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .highlight {
   font-weight: 700;
   color: #ffcc00;
-  font-size: 1.6rem;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
 }
 
-.scholarships-hero .button{
-    background-color: #3f85cc;
-    color:white;
-    margin-bottom: 20px;
+/* Button Styles with Better Touch Targets */
+.scholarships-hero .button {
+  background-color: #3f85cc;
+  color: white;
+  margin: 1rem 0;
+  padding: 0.8rem 1.8rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+  min-width: 200px;
+  text-align: center;
 }
 
-.scholarships-hero .button:hover{
+.scholarships-hero .button:hover {
   background-color: #004080;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Scholarship Types Section */
+/* Scholarship Cards Grid */
+.scholarship-types {
+  padding: 3rem 1rem;
+}
+
+.scholarship-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
 .card {
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   height: 100%;
+  overflow: hidden;
+  background: white;
 }
 
 .card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
 }
 
 .card-body {
-  padding: 2rem;
+  padding: 1.5rem;
 }
 
 .card-title {
   font-weight: 600;
   color: #2c3e50;
   margin-bottom: 1rem;
+  font-size: 1.3rem;
 }
 
 .card-text {
   color: #7f8c8d;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .card-footer {
   background: transparent;
-  border-top: none;
-  padding: 0 2rem 2rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 1rem 1.5rem;
 }
 
-/* Scholarship Categories Section */
+/* Scholarship Categories */
+.scholarship-categories {
+  padding: 3rem 1rem;
+  background-color: #f8f9fa;
+}
+
 .category-number {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   background-color: #0066cc;
   color: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 1.5rem;
-  font-size: 1.8rem;
+  margin: 0 auto 1rem;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 
 /* Application Form Section */
+.application-form {
+  padding: 3rem 1rem;
+}
+
+.form-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 .form-control, .form-select {
   padding: 0.8rem 1rem;
   border-radius: 8px;
   border: 1px solid #ddd;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
 }
 
-.form-control:focus, .form-select:focus {
-  border-color: #0066cc;
-  box-shadow: 0 0 0 0.25rem rgba(0, 102, 204, 0.25);
+.form-label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: #2c3e50;
 }
 
 .form-check-input {
@@ -131,43 +192,19 @@
 
 .form-check-label {
   margin-left: 0.5em;
+  font-size: 0.95rem;
 }
 
-.btn-primary {
-  background-color: #0066cc;
-  border-color: #0066cc;
-  padding: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-  background-color: #004d99;
-  border-color: #004d99;
-  transform: translateY(-2px);
-}
-
-.btn-outline-primary {
-  color: #0066cc;
-  border-color: #0066cc;
-  transition: all 0.3s ease;
-}
-
-.btn-outline-primary:hover {
-  background-color: #0066cc;
-  color: white;
-}
-
+/* FAQ Section */
 .faq-section {
-  padding: 5rem 2rem;
-  background-color: var(--bg-light);
+  padding: 3rem 1rem;
+  background-color: #f8f9fa;
 }
 
 .faq-section h2 {
-  font-size: 2.2rem;
-  margin-bottom: 3rem;
-  color: var(--primary-dark);
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
+  margin-bottom: 2rem;
+  color: #2c3e50;
   text-align: center;
 }
 
@@ -180,152 +217,145 @@
   margin-bottom: 1rem;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: var(--shadow);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .faq-question {
   width: 100%;
-  padding: 1.5rem;
+  padding: 1.2rem;
   text-align: left;
-  background-color: var(--white);
+  background-color: white;
   border: none;
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--text-color);
+  color: #2c3e50;
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  transition: var(--transition);
-}
-
-.faq-question:hover {
-  background-color: #f0f0f0;
-}
-
-.toggle-icon {
-  font-size: 1.5rem;
-  transition: var(--transition);
+  transition: all 0.3s ease;
 }
 
 .faq-answer {
-  padding: 0 1.5rem;
+  padding: 0 1.2rem;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease;
-  background-color: var(--white);
+  background-color: white;
 }
 
 .faq-answer p {
-  padding: 1.5rem 0;
-  color: var(--text-light);
+  padding: 1rem 0;
+  color: #7f8c8d;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 .faq-item.active .faq-question {
-  background-color: var(--primary-color);
+  background-color: #0066cc;
   color: white;
 }
 
-.faq-answer {
-  transition: max-height 0.3s ease, opacity 0.3s ease;
-  overflow: hidden;
+.faq-item.active .faq-answer {
+  max-height: 500px;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 992px) {
-  .scholarships-hero h1 {
-    font-size: 2.2rem;
-  }
-  
-  .scholarships-hero .lead {
-    font-size: 1.2rem;
-  }
-}
-
+/* Responsive Breakpoints */
 @media (max-width: 768px) {
   .scholarships-hero {
-    padding: 3rem 0;
+    min-height: auto;
+    padding: 3rem 1rem;
   }
   
-  .scholarships-hero h1 {
-    font-size: 1.8rem;
-  }
-  
-  .card {
-    margin-bottom: 1.5rem;
+  .scholarship-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
   
   .form-container {
     padding: 1.5rem;
   }
+  
+  .faq-question {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+  
+  .card-body {
+    padding: 1.25rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .scholarships-hero {
+    padding: 5rem 2rem;
+    min-height: 70vh;
+  }
+  
+  .scholarship-types,
+  .scholarship-categories,
+  .application-form,
+  .faq-section {
+    padding: 4rem 2rem;
+  }
 }
 
 /* Animation Enhancements */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.scholarship-types .card,
-.scholarship-categories .card,
-.form-container {
-  animation: fadeIn 0.6s ease forwards;
-}
-
-.scholarship-types .card:nth-child(1) { animation-delay: 0.1s; }
-.scholarship-types .card:nth-child(2) { animation-delay: 0.2s; }
-.scholarship-types .card:nth-child(3) { animation-delay: 0.3s; }
-.scholarship-types .card:nth-child(4) { animation-delay: 0.4s; }
-
-/* Utility Classes */
-.shadow-soft {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-}
-
-.rounded-xl {
-  border-radius: 12px;
-}
-
-/* Button Enhancements */
-.btn {
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-}
-
-.btn:active {
-  transform: translateY(0);
-}
-
-.btn::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 5px;
-  height: 5px;
-  background: rgba(255, 255, 255, 0.5);
-  opacity: 0;
-  border-radius: 100%;
-  transform: scale(1, 1) translate(-50%, -50%);
-  transform-origin: 50% 50%;
-}
-
-.btn:focus:not(:active)::after {
-  animation: ripple 0.6s ease-out;
-}
-
-@keyframes ripple {
-  0% {
-    transform: scale(0, 0);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(20, 20);
+@keyframes fadeInUp {
+  from {
     opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animated-card {
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+}
+
+/* Delay animations for staggered effect */
+.scholarship-grid .card:nth-child(1) { animation-delay: 0.1s; }
+.scholarship-grid .card:nth-child(2) { animation-delay: 0.2s; }
+.scholarship-grid .card:nth-child(3) { animation-delay: 0.3s; }
+.scholarship-grid .card:nth-child(4) { animation-delay: 0.4s; }
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .card:hover {
+    transform: none;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .scholarships-hero {
+    background: white !important;
+    color: black !important;
+    padding: 1rem !important;
+    min-height: auto !important;
+  }
+  
+  .scholarships-hero h1 {
+    color: black !important;
+    text-shadow: none !important;
+  }
+  
+  .card {
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+    page-break-inside: avoid;
+  }
+  
+  .button, .faq-question {
+    display: none !important;
   }
 }
