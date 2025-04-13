@@ -81,6 +81,16 @@
   width: 100%;
 }
 
+.whatsapp-btn{
+  color:white;
+  background-color: green;
+}
+
+.whatsapp-image{
+  width:20px;
+  margin-right:10px;
+}
+
 /* Top Universities Section */
 .universities-section {
   text-align: center;

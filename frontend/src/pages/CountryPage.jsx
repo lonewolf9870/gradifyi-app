@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams,Link } from "react-router-dom";
 import { countries } from "../data/countries";
 import styles from '../styles/CountryPage.module.css';
 
@@ -88,28 +88,15 @@ const AnimatedCounter = ({ value, duration = 2000 }) => {
   
 
 // University card component with lazy rank display
-const UniversityCard = ({ uni, index }) => {
-  const [ref, isVisible] = useOnScreen({
-    threshold: 0.1,
-    triggerOnce: true
-  });
-
+const UniversityCard = ({ uni }) => {
   return (
-    <div ref={ref} className={styles['university-card']}>
-      <div className={styles['university-rank']}>
-        {isVisible ? index + 1 : '...'}
-      </div>
+    <div className={styles['university-card']}>
       <img
         src={`/images/universities/${uni.image}`}
         alt={uni.name}
         className={styles['university-logo']}
       />
-      <div className={styles['university-info']}>
-        <h3>{uni.name}</h3>
-        <p className={styles['university-location']}>{uni.location}</p>
-
-        <button className={styles['view-details-btn']}>View Details</button>
-      </div>
+      <h3 className={styles['university-name']}>{uni.name}</h3>
     </div>
   );
 };
@@ -289,33 +276,6 @@ const CountryPage = () => {
         </div>
       </section>
 
-      {/* Scholarship Section */}
-      {country.scholarships.length > 0 && (
-        <section className={styles['scholarships']}>
-          <h2>Available Scholarships</h2>
-          <div className={styles['scholarships-grid']}>
-            {country.scholarships.map((scholarship, index) => (
-              <div key={index} className={styles['scholarship-card']}>
-                <h3>{scholarship.name}</h3>
-                <p className={styles['scholarship-amount']}>{scholarship.amount}</p>
-                <p className={styles['scholarship-deadline']}>
-                  Deadline: {scholarship.deadline}
-                </p>
-                <div className={styles['scholarship-eligibility']}>
-                  <h4>Eligibility:</h4>
-                  <ul>
-                    {scholarship.eligibility.map((item, idx) => (
-                      <li key={idx}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-                <button className={styles['apply-btn']}>Apply Now</button>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
-
       {/* CTA Section */}
       <section className={styles['cta-section']}>
         <h2>Ready to start your journey in {country.name}?</h2>
@@ -324,7 +284,7 @@ const CountryPage = () => {
           process.
         </p>
         <div className={styles['cta-buttons']}>
-          <button className={styles['btn-primary']}>Book Free Consultation</button>
+        <Link to={"/contact-us"}><button className={styles['btn-primary']}>Book Free Consultation</button></Link>
           <button className={styles['btn-secondary']}>Download Brochure</button>
         </div>
       </section>

@@ -1,41 +1,16 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../styles/Scholarships.css';
+import {Link} from 'react-router-dom';
+import ContactUs from '../ContactUs';
 
 function Scholarships() {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    country: '',
-    courses: '',
-    consent: false
-  });
 
    const [activeIndex, setActiveIndex] = useState(null);
   
     const toggleFAQ = (index) => {
       setActiveIndex(activeIndex === index ? null : index);
     };
-
-  const countries = ["USA", "UK", "Canada", "Australia", "India", "Germany", "France", "Singapore", "Netherlands"];
-  const courses = ["Computer Science", "Electronics & Communication", "Mechanical Engineering", "Civil Engineering", "Electrical Engineering", "Information Technology"];
-
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData({
-      ...formData,
-      [name]: type === 'checkbox' ? checked : value
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
-    alert('Thank you for applying! We will contact you shortly.');
-  };
 
   const scholarshipTypes = [
     {
@@ -128,7 +103,9 @@ function Scholarships() {
         <div className="container text-center">
           <h1 className="display-4">Scholarships to Study Abroad</h1>
           <p className="lead">Total Study Abroad Scholarship Edwise Students have Received <span className="highlight">9 crore+</span></p>
-          <button className="btn btn-light btn-lg mt-3">Free Expert Consultation</button>
+          <Link to={"/contact-us"}>
+          <button className="btn button">Free Expert Consultation</button>
+          </Link>
         </div>
       </section>
 
@@ -144,7 +121,7 @@ function Scholarships() {
                     <p className="card-text">{type.description}</p>
                   </div>
                   <div className="card-footer bg-white border-0">
-                    <button className="btn btn-outline-primary">Free Expert Consultation</button>
+                  <Link to={"/contact-us"}><button className="btn btn-outline-primary">Free Expert Consultation</button></Link>
                   </div>
                 </div>
               </div>
@@ -176,7 +153,8 @@ function Scholarships() {
       </section>
 
       {/* Application Form */}
-      <section className="py-5">
+      <ContactUs title="scholarship form"/>
+      {/* <section className="py-5">
         <div className="container">
           <h2 className="text-center mb-5">Apply for Scholarship</h2>
           <div className="row justify-content-center">
@@ -276,7 +254,7 @@ function Scholarships() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* FAQs */}
       <section className="faq-section">

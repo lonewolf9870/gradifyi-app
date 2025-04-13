@@ -35,7 +35,7 @@ function Home() {
               rel="noopener noreferrer"
             >
               <button className="whatsapp-btn">
-                <img src={whatsapp} alt="whatsapp" /> WhatsApp
+                <img src={whatsapp} alt="whatsapp" className="whatsapp-image" /> WhatsApp
               </button>
             </a>
           </div>

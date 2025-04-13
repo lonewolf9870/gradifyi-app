@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/ContactUs.css";
 
-function ContactUs() {
+function ContactUs({title = "contact us" }) {
   const initialFormState = {
     name: "",
     email: "",
@@ -109,7 +109,7 @@ function ContactUs() {
 
   return (
     <div className="container mt-5 contact-form-container">
-      <h2 className="text-center mb-4">Contact Us</h2>
+      <h2 className="text-center mb-4">{title}</h2>
 
       {submitStatus && (
         <div className={`alert alert-${submitStatus.success ? "success" : "danger"}`} role="alert">

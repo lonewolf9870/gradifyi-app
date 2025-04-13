@@ -1529,4 +1529,125 @@ export const countries = [
           }
         ]
       },
+      {
+        name: "Netherlands",
+        banner: "nethflag.jpg",
+        capital: "Amsterdam",
+        population: "17.5 Million",
+        currency: "Euro (EUR)",
+        language: "Dutch (English widely spoken)",
+        climate: "Temperate Maritime",
+        timeZone: "CET (UTC+1)",
+        internationalStudents: "100,000+",
+        description: "The Netherlands is known for its high-quality education system, wide range of English-taught programs, and vibrant international student community.",
+        educationSystem: {
+          description: "Higher education is offered through Research Universities (WO), Universities of Applied Sciences (HBO), and Institutes for International Education.",
+          stats: [
+            { value: "50+", label: "Universities" },
+            { value: "2,000+", label: "English-taught programs" },
+            { value: "94%", label: "Student Satisfaction" }
+          ]
+        },
+        universities: [
+          {
+            name: "TIO UNIVERSITY OF APPLIED SCIENCES",
+            image: "neth1.webp"
+          },
+          {
+            name: "WITTENBORG UNIVERSITY OF APPLIED SCIENCES",
+            image: "neth2.avif"
+          },
+          {
+            name: "SRH HAARLEM UNIVERSITY OF APPLIED SCIENCES",
+            image: "neth3.png"
+          },
+          {
+            name: "IC UNIVERSITY OF APPLIED SCIENCES",
+            image: "neth4.webp"
+          },
+          {
+            name: "CAMBRIDGE EDUCATION GROUP",
+            image: "neth5.jpg"
+          },
+          {
+            name:"EIT INNOENERGY & ISE - THE INSTITUTE OF SUSTAINABLE ENERGY",
+            image:"neth6.jpg"
+          }
+        ],
+        benefits: [
+          {
+            icon: "innovation",
+            title: "Top-Ranked Education",
+            description: "Globally recognized universities and research"
+          },
+          {
+            icon: "english",
+            title: "English-Taught Programs",
+            description: "Over 2,000 programs available in English"
+          },
+          {
+            icon: "qualitylife",
+            title: "High Quality of Life",
+            description: "Safe, open-minded society with excellent infrastructure"
+          }
+        ],
+        admissionRequirements: {
+          general: [
+            "Completed secondary education equivalent to Dutch diploma",
+            "Proof of English proficiency (IELTS/TOEFL)",
+            "Program-specific requirements (e.g., portfolio, entrance exam)"
+          ],
+          documents: [
+            "Academic transcripts",
+            "Motivation letter",
+            "English test scores",
+            "Copy of passport",
+            "CV/Resume"
+          ]
+        },
+        costOfLiving: [
+          { category: "Accommodation", amount: "€400-800/month" },
+          { category: "Food", amount: "€150-300/month" },
+          { category: "Transport", amount: "€40-100/month" },
+          { category: "Miscellaneous", amount: "€100-250/month" }
+        ],
+        visa: {
+          process: [
+            "Receive admission letter",
+            "University applies for student visa (MVV) on your behalf",
+            "Await IND decision",
+            "Collect MVV from Dutch embassy/consulate"
+          ],
+          requirements: [
+            "Valid passport",
+            "University admission letter",
+            "Proof of sufficient funds (€13,000+/year)",
+            "Health insurance"
+          ],
+          processingTime: "2-4 weeks",
+          successRate: "95%"
+        },
+        scholarships: [
+          {
+            name: "Holland Scholarship",
+            amount: "€5,000 (first year only)",
+            deadline: "May 1 (varies by university)",
+            eligibility: [
+              "Non-EEA nationality",
+              "Applying for full-time bachelor's or master's",
+              "Meets specific academic criteria"
+            ]
+          },
+          {
+            name: "Orange Tulip Scholarship",
+            amount: "Partial/full tuition waiver (varies)",
+            deadline: "Varies by country and institution",
+            eligibility: [
+              "Students from selected countries",
+              "Academic excellence",
+              "University nomination"
+            ]
+          }
+        ]
+      }      
   ];

@@ -39,11 +39,6 @@ function CareerCounseling() {
       title: "Personality",
       description: "A personality test is a tool designed to assess and evaluate various aspects of an individual's personality. These tests aim to uncover patterns of behavior, preferences, and traits that characterize a person."
     },
-    {
-      id: 4,
-      title: "Multiple Intelligence",
-      description: "Multiple Intelligence (MI) tests are psychological assessments designed to identify and measure an individual's strengths and preferences across various types of intelligence proposed by Howard Gardner's theory of multiple intelligence."
-    }
   ];
 
   const processSteps = [
@@ -107,7 +102,9 @@ function CareerCounseling() {
         <div className="hero-content">
           <h1>Career Counseling and Aptitude Test</h1>
           <p>Discover your true potential and make informed career decisions with expert guidance</p>
-          <Link to="/contact" className="cta-button">Free Expert Consultation</Link>
+          <Link to="/contact-us" className="cta-button"><button className='button'>
+          Free Expert Consultation
+            </button></Link>
         </div>
         <div className="hero-image">
           <img src={counselingHero} alt="Career Counseling" loading="lazy" />
@@ -119,12 +116,11 @@ function CareerCounseling() {
         <div className="container">
           <h2>Career Counseling</h2>
           <p>Career counseling, also known as career guidance or career coaching, is a process that assists individuals in making informed decisions about their career development and future employment opportunities.</p>
-          
+          </div>
           <div className="academic-pathway">
-            <h3>Academic Pathway Planning</h3>
+            <h2>Academic Pathway Planning</h2>
             <p>Academic Pathway Planning is a structured process that helps students map out their educational journey to achieve career goals. Our expert counselors for study abroad will then assist you in setting objectives, selecting courses and create a roadmap for success.</p>
           </div>
-        </div>
       </section>
 
       {/* Importance Section */}

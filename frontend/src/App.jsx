@@ -250,7 +250,9 @@ function App() {
       <footer className="main-footer">
         <div className="footer-header">
           <h3>Stay Connected with Gradifyi</h3>
+          <Link to={"/contact-us"}>
           <button className="subscribe-button">Subscribe</button>
+          </Link>
         </div>
 
         <div className="footer-container">

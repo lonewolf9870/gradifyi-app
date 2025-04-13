@@ -22,9 +22,10 @@
   .travel-hero {
     display: flex;
     align-items: center;
-    padding: 4rem 2rem;
+    justify-content: center;
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     min-height: 80vh;
+    margin:0 auto;  
   }
   
   .hero-content {

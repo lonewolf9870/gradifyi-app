@@ -48,7 +48,7 @@ function TravelAssistance() {
         <div className="hero-content">
           <h1>Seamless Travel & Forex Assistance</h1>
           <p>Let us handle the logistics while you focus on your study abroad journey</p>
-          <Link to="/contact" className="cta-button-forex">Free Expert Consultation</Link>
+          <Link to="/contact-us" className="cta-button-forex">Free Expert Consultation</Link>
         </div>
         <div className="hero-image">
           <img src={travelHero} alt="Travel and Forex Assistance" loading="lazy" />
