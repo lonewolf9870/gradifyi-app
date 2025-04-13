@@ -13,6 +13,8 @@ import arrow from "/Vector.svg";
 import Scholarships from "./pages/Student-Services/Scholarships";
 import TravelAssistance from "./pages/Student-Services/TravelAssistance";
 import CareerCounseling from "./pages/Student-Services/CareerCounseling";
+import AdmissionGuidance from './pages/Student-Services/AdmissionGuidance';
+import ScrollToTop from "./pages/ScrollToTop";
 
 function App() {
   const [dropdowns, setDropdowns] = useState({
@@ -86,6 +88,7 @@ function App() {
           label: "Admission Guidance",
           path: "/student-services/admission-guidance",
         },
+        { label: "Visa Assistance", path: "/student-services/visa-assistance" },
       ],
     },
     {
@@ -93,12 +96,6 @@ function App() {
       path: "/what-we-do",
       key: "whatWeDo",
       links: [
-        { label: "Counseling", path: "/what-we-do/counseling" },
-        {
-          label: "Application Process",
-          path: "/what-we-do/application-process",
-        },
-        { label: "Visa Guidance", path: "/what-we-do/visa-guidance" },
         { label: "About Us", path: "/what-we-do/about-us" },
         { label: "Partnered Universities", path: "/what-we-do/partnered" },
       ],
@@ -217,6 +214,7 @@ function App() {
       </div>
 
       {/* Main Content */}
+      <ScrollToTop/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/study-abroad" element={<StudyAbroad />} />
@@ -237,6 +235,14 @@ function App() {
         <Route
           path="/student-services/career-counseling"
           element={<CareerCounseling />}
+        />
+        <Route
+        path="/student-services/admission-guidance"
+        element={<AdmissionGuidance />}
+        />
+        <Route
+        path="/student-services/visa-assistance"
+        element={<AdmissionGuidance />}
         />
       </Routes>
 

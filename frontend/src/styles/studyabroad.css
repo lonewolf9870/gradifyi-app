@@ -35,7 +35,7 @@
     gap: 1rem;
   }
   
-  .consult-btn, .whatsapp-btn {
+  .consult-btn, .download-btn {
     background: #004AAD;
     color: #fff;
     border: none;
@@ -46,18 +46,18 @@
     transition: all 0.3s ease;
   }
   
-  .whatsapp-btn {
+  .download-btn {
     display: flex;
     align-items: center;
     background: #25D366;
   }
   
-  .whatsapp-btn img {
+  .download-btn img {
     width: 20px;
     margin-right: 8px;
   }
   
-  .consult-btn:hover, .whatsapp-btn:hover {
+  .consult-btn:hover, .download-btn:hover {
     opacity: 0.8;
   }
   
@@ -131,6 +131,7 @@
   .country-info h3 {
     margin: 5px 0 0;
     font-size: 1.2rem;
+    color:white;
   }
   
   .cta-button {

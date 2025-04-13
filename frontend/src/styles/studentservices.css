@@ -60,10 +60,6 @@
   border: 2px solid #3498db;
 }
 
-.whatsapp-btn:hover {
-  background-color: #f8f9fa;
-}
-
 .hero-image {
   flex: 1;
 }
@@ -192,6 +188,7 @@
   font-size: 2rem;
   color: #2c3e50;
   margin-bottom: 20px;
+  margin-left:-80px;
 }
 
 .top-countries-content p {

@@ -13,6 +13,12 @@ function Scholarships() {
     consent: false
   });
 
+   const [activeIndex, setActiveIndex] = useState(null);
+  
+    const toggleFAQ = (index) => {
+      setActiveIndex(activeIndex === index ? null : index);
+    };
+
   const countries = ["USA", "UK", "Canada", "Australia", "India", "Germany", "France", "Singapore", "Netherlands"];
   const courses = ["Computer Science", "Electronics & Communication", "Mechanical Engineering", "Civil Engineering", "Electrical Engineering", "Information Technology"];
 
@@ -273,44 +279,38 @@ function Scholarships() {
       </section>
 
       {/* FAQs */}
-      <section className="py-5 bg-light">
-  <div className="container">
-    <h2 className="text-center mb-5">Frequently Asked Questions</h2>
-    <div className="accordion" id="faqAccordion">
-      {faqs.map((faq, index) => (
-        <div key={index} className="accordion-item">
-          <h3 className="accordion-header" id={`heading${index}`}>
-            <button 
-              className="accordion-button collapsed" 
-              type="button" 
-              data-bs-toggle="collapse" 
-              data-bs-target={`#collapse${index}`}
-              aria-expanded="false" 
-              aria-controls={`collapse${index}`}
-            >
-              {faq.question}
-            </button>
-          </h3>
-          <div 
-            id={`collapse${index}`} 
-            className="accordion-collapse collapse" 
-            aria-labelledby={`heading${index}`} 
-            data-bs-parent="#faqAccordion"
-          >
-            <div className="accordion-body">
-              <p>{faq.answer}</p>
-              {index === 0 && (
-                <button className="btn btn-primary mt-3">
-                  View Current Scholarship Opportunities
+      <section className="faq-section">
+        <div className="container">
+          <h2>Frequently Asked Questions</h2>
+          <div className="faq-accordion">
+            {faqs.map((faq, index) => (
+              <div key={index} className={`faq-item ${activeIndex === index ? 'active' : ''}`}>
+                <button 
+                  className="faq-question" 
+                  onClick={() => toggleFAQ(index)}
+                  aria-expanded={activeIndex === index}
+                  aria-controls={`faq-answer-${index}`}
+                >
+                  {faq.question}
+                  <span className="toggle-icon">
+                    {activeIndex === index ? '-' : '+'}
+                  </span>
                 </button>
-              )}
-            </div>
+                <div 
+                  id={`faq-answer-${index}`}
+                  className="faq-answer"
+                  style={{
+                    maxHeight: activeIndex === index ? '500px' : '0',
+                    opacity: activeIndex === index ? '1' : '0'
+                  }}
+                >
+                  <p>{faq.answer}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
     </div>
   );
 }

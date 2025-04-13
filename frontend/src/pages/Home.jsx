@@ -97,7 +97,7 @@ function Home() {
             <a href="#">
               <FontAwesomeIcon icon={faTwitter} />
             </a>
-            <a href="#">
+            <a href="https://www.instagram.com/gradifyi?igsh=MWlhZnI5aHd6cWQ3Mg==">
               <FontAwesomeIcon icon={faInstagram} />
             </a>
             <a href="#">

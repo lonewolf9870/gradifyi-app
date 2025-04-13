@@ -105,12 +105,6 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   }
   
-  .whatsapp-btn:hover {
-    background: #f8f9fa;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  }
-  
   /* ===== Info Section ===== */
   .info-section {
     padding: 5rem 8%;

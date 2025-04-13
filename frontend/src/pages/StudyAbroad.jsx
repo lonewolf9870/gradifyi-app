@@ -52,7 +52,7 @@ function Home() {
           <div className="action-buttons">
           <Link to={"/contact-us"}><button className="consult-btn">Free expert Consultation</button>
           </Link>
-            <button className="whatsapp-btn">
+            <button className="download-btn">
               download brouchure
             </button>
           </div>
