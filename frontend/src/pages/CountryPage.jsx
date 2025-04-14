@@ -200,7 +200,7 @@ const CountryPage = () => {
           {country.benefits.map((benefit, index) => (
             <div key={index} className={styles['benefit-card']}>
               <div className={styles['benefit-icon']}>
-                <img src={`/icons/${benefit.icon}.jpg`} alt={benefit.title} />
+                <img src={`/icons/${benefit.icon}.png`} alt={benefit.title} />
               </div>
               <h3>{benefit.title}</h3>
               <p>{benefit.description}</p>

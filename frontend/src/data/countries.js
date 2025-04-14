@@ -52,7 +52,7 @@ export const countries = [
           description: "Option to change majors and customize courses"
         },
         {
-          icon: "opportunities",
+          icon: "career-opportunity",
           title: "Career Opportunities",
           description: "Strong industry connections and OPT program"
         }
@@ -704,7 +704,7 @@ export const countries = [
         ],
         "benefits": [
           {
-            "icon": "tuition",
+            "icon": "affordable",
             "title": "Low/No Tuition Fees",
             "description": "Most public universities charge no tuition (only semester fees)"
           },
@@ -1157,7 +1157,7 @@ export const countries = [
       {
         "name": "Dubai",
         "banner": "dubaiflag.avif",
-        "capital": "Abu Dhabi (UAE), Dubai is the largest city",
+        "capital": "Abu Dhabi (UAE)",
         "population": "3.5 Million (Dubai), 10 Million (UAE)",
         "currency": "UAE Dirham (AED)",
         "language": "Arabic (official), English (widely spoken)",
@@ -1326,7 +1326,7 @@ export const countries = [
         ],
         "benefits": [
           {
-            "icon": "affordability",
+            "icon": "affordable",
             "title": "Affordable Education",
             "description": "Low tuition fees (€750-€2,500/year at public universities)"
           },
@@ -1451,7 +1451,7 @@ export const countries = [
         ],
         "benefits": [
           {
-            "icon": "affordability",
+            "icon": "quality",
             "title": "Low-Cost Excellence",
             "description": "World-class education at 1/3 the cost of Western countries"
           },
@@ -1586,7 +1586,7 @@ export const countries = [
             description: "Over 2,000 programs available in English"
           },
           {
-            icon: "qualitylife",
+            icon: "lifestyle",
             title: "High Quality of Life",
             description: "Safe, open-minded society with excellent infrastructure"
           }
