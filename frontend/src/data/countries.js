@@ -162,7 +162,7 @@ export const countries = [
           description: "Option to change majors and customize courses"
         },
         {
-          icon: "opportunities",
+          icon: "opportunity",
           title: "Career Opportunities",
           description: "Strong industry connections and OPT program"
         }

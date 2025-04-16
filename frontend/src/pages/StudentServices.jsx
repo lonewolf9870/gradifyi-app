@@ -134,7 +134,6 @@ function StudentServices() {
             your preferences and career aspirations.
           </p>
           <div className="social-section">
-            <button className="contact-btn">Contact Us</button>
             <div className="social-icons">
               <a href="#">
                 <FontAwesomeIcon icon={faFacebook} />
