@@ -182,9 +182,8 @@ function App() {
             </div>
             {links && links.length > 0 && (
               <div
-                className={`mobile-dropdown-menu ${
-                  mobileDropdowns[key] ? "active" : ""
-                }`}
+                className={`mobile-dropdown-menu ${mobileDropdowns[key] ? "active" : ""
+                  }`}
               >
                 {links.map(({ label, path }) => (
                   <Link
@@ -221,13 +220,13 @@ function App() {
         <Route path="/what-we-do" element={<Whatwedo />} />
         <Route path="/student-services" element={<StudentServices />} />
         <Route path="/contact-us" element={<ContactUs />} />
-        
+
         {/* Student Services */}
         <Route path="/student-services/scholarships" element={<Scholarships />} />
         <Route path="/student-services/travel-assistance" element={<TravelAssistance />} />
         <Route path="/student-services/career-counseling" element={<CareerCounseling />} />
         <Route path="/student-services/admission-guidance" element={<AdmissionGuidance />} />
-        
+
         {/* Add these routes if you have the corresponding components */}
         {/* <Route path="/about-us" element={<AboutUs />} />
         <Route path="/work-with-us" element={<WorkWithUs />} />
@@ -244,7 +243,7 @@ function App() {
         <div className="footer-header">
           <h3>Stay Connected with Gradifyi</h3>
           <Link to={"/contact-us"}>
-          <button className="subscribe-button">Subscribe</button>
+            <button className="subscribe-button">Subscribe</button>
           </Link>
         </div>
 
@@ -281,7 +280,7 @@ function App() {
                 "ACT",
               ].map((test) => (
                 <li key={test}>
-                    {test}
+                  {test}
                 </li>
               ))}
             </ul>
@@ -346,6 +345,11 @@ function App() {
 
         <div className="footer-bottom">
           <p>© {new Date().getFullYear()} Gradifyi. All Rights Reserved.</p>
+          <div className="address">
+            <p><span>ADDRESS: </span>
+              17-1-382/N/1, Champapet Rd, Vaishali Nagar, Champapet, Hyderabad, Telangana 500079</p>
+              <p><span>PHONE NUMBER : </span>9996668699</p>
+          </div>
         </div>
       </footer>
     </div>

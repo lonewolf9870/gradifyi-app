@@ -314,10 +314,33 @@
 
 .footer-bottom {
   margin-top: 20px;
+  padding:0px 150px;
   font-size: 14px;
   color: #bbb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
+.address{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width:400px;
+}
+
+.address span{
+  color: black;
+  font-size: 15px;
+}
+
+.address p{
+  font-size:15px;
+}
+
+.address p:last-of-type span{
+  padding-left:20px;
+}
 /* ===== Responsive Design ===== */
 @media (max-width: 1024px) {
   .app-header {
