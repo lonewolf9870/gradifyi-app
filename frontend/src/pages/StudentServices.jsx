@@ -119,11 +119,6 @@ function StudentServices() {
         </div>
       </section>
 
-      {/* Nested Route Content */}
-      <div className="nested-content">
-        <Outlet />
-      </div>
-
       {/* Top Countries Section */}
       <section className="top-countries-section">
         <div className="top-countries-content">

@@ -261,3 +261,17 @@
     justify-content: center;
   }
 }
+
+@media (max-width:480px){
+  .top-countries-content h2 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    margin-left:0px;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    gap: 30px;
+  }
+}

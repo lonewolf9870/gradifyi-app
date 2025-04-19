@@ -243,15 +243,17 @@
   .top-countries-section {
     flex-direction: row;
     width: 80%;
+    margin:0 auto;
   }
   
   .top-countries-content {
     align-items: flex-start;
     text-align: left;
   }
-  
-  .top-countries-content h2 {
-    padding-left: 80px;
+
+  .top-countries-content h2{
+    font-size: 15px;
+    margin-left:50px;
   }
 }
 

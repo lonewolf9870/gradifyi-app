@@ -61,8 +61,6 @@ function Whatwedo() {
                         your preferences and career aspirations.
                       </p>
                       <div className="social-icons">
-                      <Link to="/contact-us" className="contact-button"><button>
-                      Contact Us</button></Link>
                         <a href="#">
                           <FontAwesomeIcon icon={faFacebook} />
                         </a>

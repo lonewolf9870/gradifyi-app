@@ -400,6 +400,11 @@
   .footer-section {
     text-align: center;
   }
+
+  .footer-bottom{
+    display: flex;
+    flex-direction: column;
+  }
   
   .app-header {
     padding: 1rem;
