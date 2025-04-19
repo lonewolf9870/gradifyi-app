@@ -22,23 +22,23 @@ import indiaImage from '../assets/indiaimage.jpg';
 
 function Home() {
   const countries = [
-    { name: "UK", image: ukImage },
-    { name: "USA", image: usaImage },
-    { name: "Canada", image: canadaImage },
-    { name: "Australia", image: australiaImage },
-    { name: "New Zealand", image: newzealandImage },
-    { name: "Singapore", image: singaporeImage },
-    { name: "Ireland", image: irelandImage },
-    { name: "France", image: franceImage },
-    { name: "Germany", image: germanyImage },
-    { name: "Switzerland", image: switzerlandImage },
-    { name: "Dubai", image: dubaiImage },
-    { name: "Spain", image: spainImage },
-    { name: "Malaysia", image: malaysiaImage },
-    { name: "Mauritius", image: mauritiusImage },
-    { name: "Italy", image: italyImage },
-    { name: "Netherlands", image: netherlandsImage },
-    { name: "India", image: indiaImage },
+    { name: "UK", image: ukImage, path: "/study-abroad/uk" },
+    { name: "USA", image: usaImage, path: "/study-abroad/usa" },
+    { name: "Canada", image: canadaImage, path: "/study-abroad/canada" },
+    { name: "Australia", image: australiaImage, path: "/study-abroad/australia" },
+    { name: "New Zealand", image: newzealandImage, path: "/study-abroad/newzealand" },
+    { name: "Singapore", image: singaporeImage, path: "/study-abroad/singapore" },
+    { name: "Ireland", image: irelandImage, path: "/study-abroad/ireland" },
+    { name: "France", image: franceImage, path: "/study-abroad/france" },
+    { name: "Germany", image: germanyImage, path: "/study-abroad/germany" },
+    { name: "Switzerland", image: switzerlandImage, path: "/study-abroad/switzerland" },
+    { name: "Dubai", image: dubaiImage, path: "/study-abroad/dubai" },
+    { name: "Spain", image: spainImage, path: "/study-abroad/spain" },
+    { name: "Malaysia", image: malaysiaImage, path: "/study-abroad/malaysia" },
+    { name: "Mauritius", image: mauritiusImage, path: "/study-abroad/mauritius" },
+    { name: "Italy", image: italyImage, path: "/study-abroad/italy" },
+    { name: "Netherlands", image: netherlandsImage, path: "/study-abroad/netherlands" },
+    { name: "India", image: indiaImage, path: "/study-abroad/india" },
   ];
 
   return (
@@ -48,10 +48,10 @@ function Home() {
         <div className="hero-content">
           <h1>Dream Big, Study Smart & Succeed Globally with Expert Guidance!</h1>
           <p>Connect with our experts and take the first step toward studying abroad.</p>
-          
+
           <div className="action-buttons">
-          <Link to={"/contact-us"}><button className="consult-btn">Free expert Consultation</button>
-          </Link>
+            <Link to={"/contact-us"}><button className="consult-btn">Free expert Consultation</button>
+            </Link>
             <button className="download-btn">
               download brouchure
             </button>
@@ -69,16 +69,25 @@ function Home() {
         <p>Explore the countries with the best education in the world! Learn more about top universities, scholarships, cost of living, post-study work rights, and more.</p>
         <div className="countries-grid">
           {countries.map((country, index) => (
-            <div key={index} className="country-card">
-              <img src={country.image} alt={country.name} className="country-image" />
-              <div className="country-info">
-                <h3>Study in {country.name}</h3>
+            <Link to={country.path} key={index} className="country-card-link">
+              <div className="country-card">
+                <img
+                  src={country.image}
+                  alt={`Study in ${country.name}`}
+                  className="country-image"
+                />
+                <div className="country-info">
+                  <h3>Study in {country.name}</h3>
+                  <span className="explore-text">Explore →</span>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
         <div className="cta-button">
+          <Link to="/contact-us">
           <button className="consult-btn">Book a Free Consultation</button>
+          </Link>
         </div>
       </section>
     </div>
