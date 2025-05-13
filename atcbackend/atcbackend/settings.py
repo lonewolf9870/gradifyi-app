@@ -16,8 +16,6 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'django-react-full-stack-app-frontend.onrender.com',
     'django-react-full-stack-app-backend.onrender.com',
-    'gradifyi.com',
-    'www.gradifyi.com',
 ]
 
 # Installed apps
