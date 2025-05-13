@@ -76,7 +76,7 @@ export default function ContactForm() {
             if (Object.keys(newErrors).length === 0) {
                 try {
                     const apiBase = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
-                    const apiUrl = `${apiBase}/contact-us/`;
+                    const apiUrl = `${apiBase}/contacts/`;
                     const response = await fetch(apiUrl, {
                         method: "POST",
                         headers: {
