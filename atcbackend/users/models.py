@@ -11,7 +11,7 @@ class Contact(models.Model):
 
     name = models.CharField(max_length=255)
     email = models.EmailField()
-    phonenumber = models.CharField(max_length=10)
+    phonenumber = models.CharField(max_length=15, default='0000000000')
     type = models.CharField(max_length=50, choices=BUSINESS_TYPES)
     created_at = models.DateTimeField(auto_now_add=True)
 
